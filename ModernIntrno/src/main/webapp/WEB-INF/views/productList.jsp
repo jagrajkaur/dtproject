@@ -19,11 +19,14 @@
 products -> 
 p = 1	Study Table design for bedroom	Study Table	6899.0	3
 2	Decorative Wardrobe available easily	Wardrobe	16899.0	2
+3	3-seater sofa length- 85"	Leather Sofa	10999.0	4
  -->
-	<table class="table table-striped">
+ <div class="container">
+	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
 				<th>ProductID</th>
+				<th>ProductImage</th>
 				<th>ProductName</th>
 				<th>Price</th>
 				<th>Action</th>
@@ -35,12 +38,24 @@ p = 1	Study Table design for bedroom	Study Table	6899.0	3
 					<!-- p.getProductName() -->
 					<!-- p.getPrice() -->
 					<td>${product.pid}</td>
+					<td><img class="img-fluid" style="height: 40px; width: 40px" src="<c:url value="/resources/images/${product.pid}.png" />"></td>
 					<td>${product.name }</td>
 					<td>${product.price }</td>
-					<td><a href="viewProduct/${product.pid }">View More</a></td>
+					<td>
+						<a href='<c:url value="viewProduct/${product.pid }"></c:url>'><span class="glyphicon glyphicon-info-sign"></span></a>
+						<%-- <a href='<c:url value="viewProduct/${product.pid }"></c:url>'><span class="glyphicon glyphicon-trash"></span></a>
+						<a href='<c:url value="viewProduct/${product.pid }"></c:url>'><span class="glyphicon glyphicon-pencil"></span></a>
+						--%>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	</div><br><br><br><br><brr><br><br>
+	
+	
+				<!-- footer -->
+<%@ include file="template/footer.jsp" %>
+
 </body>
 </html>

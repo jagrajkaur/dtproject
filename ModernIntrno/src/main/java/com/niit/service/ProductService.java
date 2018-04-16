@@ -8,4 +8,6 @@ public interface ProductService {
 
 	List<Product> getAllProducts();
 	Product getProductById(int pid);
+	boolean addProduct(Product product);
+	
 }

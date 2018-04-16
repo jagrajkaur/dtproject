@@ -10,7 +10,7 @@
 <body>
 														 <!--footer-->
 	
-	<div class="container-fluid;">										
+	<div class="container-fluid">										
 	<footer class="row" id="footer">
         <nav class="nav navbar-default">                 
         

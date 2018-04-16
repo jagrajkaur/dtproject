@@ -9,7 +9,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>    
 </head>
 
-<body>
+<body style="background-color:buttonhighlight;">
+<div class="container-fluid">
 									<!-- header -->
 		<%@ include file="template/header.jsp" %>
 
@@ -36,14 +37,12 @@
                 </div>
                  <div class="item">
                     <img src="./resources/images/img-hero.jpg" alt="second slide" height="50%" width="100%">
-                    <div class="top-left" style="position: relative; top: 8px; left: 16px;">
                       <div class="container-fluid">
-                        <div class="carousel-caption" style="position: absolute; top: 5%">
+                        <div class="carousel-caption">
                             <h1>THE EASIEST WAY TO DESIGN A BEDROOM.</h1>
                             <p>Interior of modern empty wardrobe room</p>
                       	</div>
                       </div>
-                    </div>
                 </div>
                  <div class="item">
                     <img src="./resources/images/2.jpg" alt="third slide" height="100%" width="100%">
@@ -133,7 +132,7 @@
 
 
 				<!-- footer -->
-<%@ include file="template/footer.jsp" %>
-
+<%@ include file="template/footer.jsp" %><br><br>
+</div>
 </body>
 </html>

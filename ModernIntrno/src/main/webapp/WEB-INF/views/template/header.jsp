@@ -17,7 +17,7 @@
 
 		<!-- LOGO -->
 		<div>
-		<a href="#"><img style="margin-top: 3px;" src="./resources/images/Interiors.png" alt="Your Logo" height="48px" width="130px"></a>		
+		<a href="#"><img style="margin-top: 3px;" src="<c:url value="./resources/images/Interiors.png" />" alt="Your Logo" height="48px" width="130px"></a>		
 		<p style="margin-top:20px; color:gray; float: right; font-style: italic; font-size:large; letter-spacing: 2px;">Design is a Journey of Discovery..!</p>
 		</div>
 		<hr>
@@ -39,6 +39,7 @@
 			<li>
 			<a href="allProducts">Products</a>
 			</li>
+			<li><a href="addProduct">Add Product</a></li>
 			<li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Select by Categories<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="">Modern</a></li>
@@ -49,7 +50,7 @@
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 				<li><a href="login">login<span class="glyphicon glyphicon-user"></span></a></li>
-                <li><a href="signup">SignUp</a></li>
+                <li><a href="registerCustomer">SignUp</a></li>
 		</ul>
 		</div>
 		

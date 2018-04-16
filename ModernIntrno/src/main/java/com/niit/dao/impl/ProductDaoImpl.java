@@ -49,5 +49,17 @@ public class ProductDaoImpl implements ProductDao {
 			return null;
 		}
 	}
+	public boolean addProduct(Product product) {
+		try {
+			Session session = sessionfactory.openSession();
+			session.save(product);
+			session.close();
+			return true;
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+			return false;
+		}
+	}
 	
 }

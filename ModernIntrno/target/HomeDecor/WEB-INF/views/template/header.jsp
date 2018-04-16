@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <title>Modern Intrno Design Interior Category Bootstrap Responsive Website Template</title>
@@ -14,8 +15,9 @@
 <nav class="navbar navbar-default">
 <div class="container-fluid">
 
+		<!-- LOGO -->
 		<div>
-		<a href="#"><img style="margin-top: 3px;" src="./resources/images/Interiors.png" alt="Your Logo" height="48px" width="130px"></a>		
+		<a href="#"><img style="margin-top: 3px;" src="<c:url value="./resources/images/Interiors.png" />" alt="Your Logo" height="48px" width="130px"></a>		
 		<p style="margin-top:20px; color:gray; float: right; font-style: italic; font-size:large; letter-spacing: 2px;">Design is a Journey of Discovery..!</p>
 		</div>
 		<hr>
@@ -35,8 +37,9 @@
 			<a href="#">Home<span class="glyphicon glyphicon-home"></span></a>
 			</li>
 			<li>
-			<a href="Product.java">Products</a>
+			<a href="allProducts">Products</a>
 			</li>
+			<li><a href="addProduct">Add Product</a></li>
 			<li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Select by Categories<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="">Modern</a></li>

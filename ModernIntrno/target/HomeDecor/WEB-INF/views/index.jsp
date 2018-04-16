@@ -36,11 +36,13 @@
                 </div>
                  <div class="item">
                     <img src="./resources/images/img-hero.jpg" alt="second slide" height="50%" width="100%">
-                    <div class="container-fluid">
-                        <div class="carousel-caption">
+                    <div class="top-left" style="position: relative; top: 8px; left: 16px;">
+                      <div class="container-fluid">
+                        <div class="carousel-caption" style="position: absolute; top: 5%">
                             <h1>THE EASIEST WAY TO DESIGN A BEDROOM.</h1>
                             <p>Interior of modern empty wardrobe room</p>
-                        </div>
+                      	</div>
+                      </div>
                     </div>
                 </div>
                  <div class="item">

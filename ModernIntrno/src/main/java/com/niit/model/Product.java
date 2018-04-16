@@ -1,11 +1,19 @@
 package com.niit.model;
 
+
 import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class Product implements Serializable {
@@ -16,13 +24,31 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	 
 	private int pid; 
-	private String name,description;
+	@NotEmpty(message="ProductName cannot be blank(*)")
+	private String name;
+	@NotEmpty(message="Product description is required(*)")
+	private String description;
+	@Min(value=1,message="minimum quantity must be 1")
 	private int quantity;
+	@Min(value=1,message="minimum price must be 1")
 	private double price;
+	
+	@Transient
+	private MultipartFile image;
+	@Min(value=1,message="choose atleast 1 image")
 	
 	public Product() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public MultipartFile getImage() {
+		return image;
+	}
+
+	public void setImage(MultipartFile image) {
+		this.image = image;
 	}
 
 	public int getPid() {
@@ -64,7 +90,7 @@ public class Product implements Serializable {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
+		
 	
 
 }

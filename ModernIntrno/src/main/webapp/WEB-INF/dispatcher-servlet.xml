@@ -18,6 +18,10 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<!-- <property name="maxUpdateSize" value="10240000"></property> -->
+	</bean> 
+
     <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
     <mvc:annotation-driven />
 </beans>

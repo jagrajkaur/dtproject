@@ -24,5 +24,12 @@ public class ProductServiceImpl implements ProductService{
 		// TODO Auto-generated method stub
 		return productDao.getAllProducts();
 	}
+
+	public boolean addProduct(Product product) {
+		// TODO Auto-generated method stub
+		return productDao.addProduct(product);
+	}
+	
+	
 	
 }
