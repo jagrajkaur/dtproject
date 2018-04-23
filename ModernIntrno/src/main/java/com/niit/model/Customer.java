@@ -26,10 +26,12 @@ public class Customer implements Serializable {
 	private long phoneNo;
 	private String username;
 	private String password;
+	private boolean enabled;
 	
 	@OneToOne
 	@JoinColumn(name="billingAddressId")
 	private BillingAddress billingAddress;
+	
 	@OneToOne
 	@JoinColumn(name="shippingAddressId")
 	private ShippingAddress shippingAddress; 
@@ -101,6 +103,14 @@ public class Customer implements Serializable {
 
 	public void setShippingAddress(ShippingAddress shippingAddress) {
 		this.shippingAddress = shippingAddress;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	

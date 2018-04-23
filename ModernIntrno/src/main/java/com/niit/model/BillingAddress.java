@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -27,16 +26,15 @@ public class BillingAddress implements Serializable {
 	private String province;
 	private String country;
 	private int zipcode;
+
+	@OneToOne
+	Customer customer;
 	
 	public BillingAddress()
 	{
 		// TODO Auto-generated constructor stub
 	}
-	
 
-	@OneToOne
-	Customer customer;
-	
 	public Customer getCustomer() {
 		return customer;
 	}

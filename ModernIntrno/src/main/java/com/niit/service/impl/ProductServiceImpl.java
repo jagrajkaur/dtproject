@@ -30,6 +30,4 @@ public class ProductServiceImpl implements ProductService{
 		return productDao.addProduct(product);
 	}
 	
-	
-	
 }

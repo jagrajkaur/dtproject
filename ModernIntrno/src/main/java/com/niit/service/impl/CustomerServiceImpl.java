@@ -19,6 +19,11 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerDao.registerCustomer(customer);
 	}
 
+	public Customer getCustomerById(int customerId) {
+		// TODO Auto-generated method stub
+		return customerDao.getCustomerById(customerId);
+	}
+
 	
 
 }

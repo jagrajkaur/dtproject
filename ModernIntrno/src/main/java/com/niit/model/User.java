@@ -3,9 +3,9 @@ package com.niit.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 
 @Entity
 public class User implements Serializable {
@@ -20,12 +20,11 @@ public class User implements Serializable {
 	private String password;
 	private boolean enabled;
 	
+	
 	public User()
 	{
 		// TODO Auto-generated constructor stub
 	}
-	
-	
 	
 	public String getUsername() {
 		return username;
@@ -45,6 +44,8 @@ public class User implements Serializable {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
+	
+
 
 	
 }

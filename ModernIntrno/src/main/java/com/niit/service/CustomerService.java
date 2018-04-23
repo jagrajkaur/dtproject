@@ -5,4 +5,5 @@ import com.niit.model.Customer;
 public interface CustomerService {
 
     boolean registerCustomer(Customer customer);
+    Customer getCustomerById(int customerId);
 }

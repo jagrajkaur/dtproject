@@ -35,9 +35,18 @@ public class CustomerController {
 	}
 	
 	@RequestMapping(value="/registerCustomer", method = RequestMethod.POST)
-	public String registerCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult result)
+	public String registerCustomer(@ModelAttribute("customer") Customer customer)
 	{
-		if(result.hasErrors())
+		boolean flag = customerService.registerCustomer(customer);
+		if(flag==true)
+		{
+			customer.setEnabled(true);
+			return "index";
+		}
+		else return "registerCustomer";
+		
+		
+		/*if(result.hasErrors())
 		{
 			return "registerCustomer";
 		}
@@ -51,6 +60,6 @@ public class CustomerController {
 			System.out.println("Register Customer Details....");
 			return "registerCustomer";
 		}
-		
+		*/
 	}
 }

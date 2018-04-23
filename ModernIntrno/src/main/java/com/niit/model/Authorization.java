@@ -6,8 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Authorization implements Serializable {
@@ -27,9 +25,6 @@ public class Authorization implements Serializable {
 	{
 		// TODO Auto-generated constructor stub
 	}
-/*	@OneToOne
-	@JoinColumn(name="customerId")
-	private Customer customer;*/
 	
 	public int getRoleId() {
 		return roleId;

@@ -49,4 +49,10 @@ public class CustomerDaoImpl implements CustomerDao{
 		
 		
 	}
+
+	public Customer getCustomerById(int customerId) {
+		// TODO Auto-generated method stub
+		Session session = sessionfactory.openSession();
+		return (Customer) session.get(Customer.class, customerId);
+	}
 }
