@@ -9,5 +9,8 @@ public interface ProductService {
 	List<Product> getAllProducts();
 	Product getProductById(int pid);
 	boolean addProduct(Product product);
+	boolean deleteProduct(Product product);
+	void saveProduct(Product product);
+	void updateProduct(Product product);
 	
 }

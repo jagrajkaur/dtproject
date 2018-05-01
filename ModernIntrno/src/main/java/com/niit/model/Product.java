@@ -2,16 +2,22 @@ package com.niit.model;
 
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Product implements Serializable {
@@ -24,18 +30,24 @@ public class Product implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	 
 	private int pid; 
+	
 	@NotEmpty(message="ProductName cannot be blank(*)")
 	private String name;
+	
 	@NotEmpty(message="Product description is required(*)")
 	private String description;
+	
 	@Min(value=1,message="minimum quantity must be 1")
 	private int quantity;
+	
 	@Min(value=1,message="minimum price must be 1")
 	private double price;
 	
 	@Transient
 	private MultipartFile image;
-	@Min(value=1,message="choose atleast 1 image")
+	
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<CartItem> cartItemList;
 	
 	public Product() {
 		// TODO Auto-generated constructor stub
@@ -79,6 +91,14 @@ public class Product implements Serializable {
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+
+	public List<CartItem> getCartItemList() {
+		return cartItemList;
+	}
+
+	public void setCartItemList(List<CartItem> cartItemList) {
+		this.cartItemList = cartItemList;
 	}
 
 	public double getPrice() {

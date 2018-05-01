@@ -22,7 +22,7 @@ public class HomeController {
 		{ 
 			model.addAttribute("error", "Invalid username and password"); 
 		}  
-		if (logout !=null)
+		if (logout != null)
 		{ 
 			model.addAttribute("msg", "You have been logged out successfully"); 
 		}  

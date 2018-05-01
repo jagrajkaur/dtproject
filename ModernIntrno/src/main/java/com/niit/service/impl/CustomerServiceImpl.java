@@ -1,6 +1,8 @@
 package com.niit.service.impl;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,16 @@ public class CustomerServiceImpl implements CustomerService {
 	public Customer getCustomerById(int customerId) {
 		// TODO Auto-generated method stub
 		return customerDao.getCustomerById(customerId);
+	}
+
+	public List<Customer> getAllCustomers() {
+		
+		return customerDao.getAllCustomers();
+	}
+
+	public Customer getCustomerByUsername(String username) {
+		// TODO Auto-generated method stub
+		return customerDao.getCustomerByUsername(username);
 	}
 
 	

@@ -2,10 +2,10 @@ package com.niit.controller;
 
 
 import java.io.File;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Locale.Category;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -48,7 +48,62 @@ public class ProductController {
 		
 	}
 
-	@RequestMapping(value="/addProduct")
+	@RequestMapping(value="/admin/deleteProduct/{pid}")
+	public String deleteProduct(@PathVariable("pid") int pid,Model model,HttpServletRequest request)
+	{
+		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+        path = Paths.get(rootDirectory + "/WEB-INF/resources/images/" + pid + ".png");
+
+        if(Files.exists(path)){
+            try {
+                Files.delete(path);
+            } catch (Exception ex){
+                ex.printStackTrace();
+            }
+        }
+
+        Product product = productService.getProductById(pid);
+        productService.deleteProduct(product);
+
+        return "productList";
+	}
+	
+	@RequestMapping(value="/admin/updateProductForm/{pid}")
+	public String updateProduct(@PathVariable("pid") int pid,  Model model) {
+		
+		Product product=productService.getProductById(pid);
+		model.addAttribute("product", product);
+		return "updateProductForm";
+	}
+	
+	@RequestMapping(value="/admin/updateProductForm/{pid}", method=RequestMethod.POST)
+	public String update(@Valid @ModelAttribute("product") Product product, BindingResult result, HttpServletRequest request) {
+		
+		if(result.hasErrors()){
+            return "updateProductForm";
+        }
+		
+		MultipartFile productImage = product.getImage();
+        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+        path = Paths.get(rootDirectory + "/WEB-INF/resources/images/" + product.getPid() + ".png");
+
+        if(productImage != null && !productImage.isEmpty()){
+            try {
+                productImage.transferTo(new File(path.toString()));
+            } catch (Exception ex){
+                ex.printStackTrace();
+                throw new RuntimeException("Product image saving failed", ex);
+            }
+        }
+
+        productService.updateProduct(product);
+
+        return "redirect:/admin/productList";
+
+		
+	}
+	
+	@RequestMapping(value="/admin/addProduct")
 	public String viewAddProductPage(Model model)
 	{
 		Product product=new Product();
@@ -57,7 +112,7 @@ public class ProductController {
 	}
 	
 	private Path path;
-	@RequestMapping(value="/addProduct", method = RequestMethod.POST)
+	@RequestMapping(value="/admin/addProduct", method = RequestMethod.POST)
 	public String addProduct(@Valid @ModelAttribute("product") Product product, BindingResult result, HttpServletRequest request)
 	{
 		String filename=null; 
@@ -65,12 +120,6 @@ public class ProductController {
 		  if(result.hasErrors()){
 				return "addProduct";
 			}
-		  /*ServletContext context=context.getServletContext(); 
-		  System.out.println(context);
-		  String path=context+"/resources/images/"+product.getPid()+".jpg"; 
-		  System.out.println("Path = "+path); 
-		  System.out.println("File name = "+product.getImage().getOriginalFilename()); 
-		  File f=new File(path); */
 		  productService.addProduct(product);
 		  MultipartFile productImage =product.getImage();
 		  String rootDirectory= request.getSession().getServletContext().getRealPath("/");
@@ -82,23 +131,11 @@ public class ProductController {
 		  { 
 			  try 
 			   { 
-			    //filename=p.getImage().getOriginalFilename(); 
-			   // byte[] bytes=product.getImage().getBytes(); 
-			   /* BufferedOutputStream bs=new BufferedOutputStream(new FileOutputStream(f)); 
-			    bs.write(bytes); 
-			    bs.close(); 
-			    System.out.println("Image uploaded"); */  
-				  
+			     
 				  productImage.transferTo(new File(path.toString())); 
 				    System.out.println("Image uploaded"); 
 		  
-		
-			    //if(result.hasErrors()){
-			    //return "addProduct";
-			    //}
-		
-			   
-			    return "redirect:/allProducts";
+			   	    return "redirect:/allProducts";
 			    
 			   }catch(Exception ex)
 			  {
@@ -110,7 +147,7 @@ public class ProductController {
 		  {
 			  res=0;
 		  }
-		return "viewProduct";
+		return "redirect:/admin/productList";
        
 
 }

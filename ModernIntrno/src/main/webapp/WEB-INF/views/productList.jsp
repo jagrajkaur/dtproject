@@ -22,7 +22,7 @@ p = 1	Study Table design for bedroom	Study Table	6899.0	3
 3	3-seater sofa length- 85"	Leather Sofa	10999.0	4
  -->
  <div class="container">
-	<table class="table table-striped table-bordered">
+	<table class="table table-striped table-bordered table-hover">
 		<thead>
 			<tr>
 				<th>ProductID</th>
@@ -43,9 +43,8 @@ p = 1	Study Table design for bedroom	Study Table	6899.0	3
 					<td>${product.price }</td>
 					<td>
 						<a href='<c:url value="viewProduct/${product.pid }"></c:url>'><span class="glyphicon glyphicon-info-sign"></span></a>
-						<%-- <a href='<c:url value="viewProduct/${product.pid }"></c:url>'><span class="glyphicon glyphicon-trash"></span></a>
-						<a href='<c:url value="viewProduct/${product.pid }"></c:url>'><span class="glyphicon glyphicon-pencil"></span></a>
-						--%>
+						<a href='<c:url value="/admin/deleteProduct/${product.pid}"></c:url>'><span class="glyphicon glyphicon-trash"></span></a>
+						<a href='<c:url value="/admin/updateProductForm/${product.pid}"></c:url>'><span class="glyphicon glyphicon-pencil"></span></a>
 					</td>
 				</tr>
 			</c:forEach>

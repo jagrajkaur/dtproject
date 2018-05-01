@@ -1,4 +1,5 @@
 <%@ include file="template/header.jsp" %>
+
 <div class="continer-wrapper">
 	<div class="container">
 		<div class="page-header">
@@ -10,6 +11,6 @@
 		
 		</c:if>
 	</div>
-
 </div>
+
 <%@ include file="template/footer.jsp" %>

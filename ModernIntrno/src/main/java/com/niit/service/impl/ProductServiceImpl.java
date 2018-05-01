@@ -29,5 +29,22 @@ public class ProductServiceImpl implements ProductService{
 		// TODO Auto-generated method stub
 		return productDao.addProduct(product);
 	}
+
+	public boolean deleteProduct(Product product) {
+		return productDao.deleteProduct(product);
+		
+	}
+
+	public void saveProduct(Product product) {
+		// TODO Auto-generated method stub
+		productDao.saveOrUpdateProduct(product);
+		
+	}
+
+	public void updateProduct(Product product) {
+		// TODO Auto-generated method stub
+		productDao.saveOrUpdateProduct(product);
+		
+	}
 	
 }

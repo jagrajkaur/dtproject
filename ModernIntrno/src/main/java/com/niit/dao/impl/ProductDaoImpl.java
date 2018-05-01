@@ -61,5 +61,35 @@ public class ProductDaoImpl implements ProductDao {
 			return false;
 		}
 	}
+	public boolean deleteProduct(Product product) {
+		try {
+			Session session = sessionfactory.openSession();
+			Query q = session.createQuery("delete from Product where id=?");
+			q.setInteger(0, product.getPid());
+			q.executeUpdate();
+			session.close();
+			return true;
+			
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		return false;
+		
+	}
+	public void saveOrUpdateProduct(Product product) {
+		// TODO Auto-generated method stub
+		try {
+			Session session = sessionfactory.openSession();
+			System.out.println("Id og the product" + product.getPid());
+			session.saveOrUpdate(product);
+			System.out.println("After inserting id of the product is "+product.getPid());
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		
+		
+	}
 	
 }

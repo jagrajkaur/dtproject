@@ -10,7 +10,7 @@
 <div class="container">
 <h1 align="center">Add Product</h1>
 
-<form:form method="POST" action="addProduct" commandName="product"  enctype="multipart/form-data">
+<form:form method="POST" action="${pageContext.request.contextPath}/admin/addProduct" commandName="product"  enctype="multipart/form-data">
 <table class="table form-group">
         <tr>
             <td><label for="name">Enter Product Name</label></td>
@@ -37,9 +37,7 @@
         </tr>
         <tr>        
           <td><label for="image">Image</label></td>       
-           <td><form:input type="file" path="image" /><br>
-           <form:errors path="image" cssStyle="color:red"></form:errors></td>
-           </td>  
+           <td><form:input type="file" path="image" /><br></td>  
         </tr> 
            
          <tr>   

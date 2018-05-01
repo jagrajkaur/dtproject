@@ -9,6 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Customer implements Serializable {
@@ -21,10 +25,15 @@ public class Customer implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int customerId;
+	
+	@NotEmpty (message = "The customer name must not be null")
 	private String name;
+	@NotEmpty (message = "The customer email must not be null")
 	private String emailId;
 	private long phoneNo;
+	@NotEmpty (message = "The customer username must not be null")
 	private String username;
+	 @NotEmpty (message = "The customer password must not be null")
 	private String password;
 	private boolean enabled;
 	
@@ -35,6 +44,10 @@ public class Customer implements Serializable {
 	@OneToOne
 	@JoinColumn(name="shippingAddressId")
 	private ShippingAddress shippingAddress; 
+	
+	 @OneToOne
+	 @JoinColumn(name = "cartId")
+	 private Cart cart;
 	
 	public Customer()
 	{
@@ -112,6 +125,15 @@ public class Customer implements Serializable {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
+	
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
 
 	
 }
