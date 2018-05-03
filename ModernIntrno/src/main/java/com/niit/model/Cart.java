@@ -4,18 +4,29 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 @Entity
 public class Cart implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int cartId;
+	
 	
 	@OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<CartItem> cartItems;
 	
 	@OneToOne
     @JoinColumn(name = "customerId")
+	@JsonIgnore
     private Customer customer;
 
     private double grandTotal;

@@ -1,10 +1,15 @@
 var cartApp = angular.module ("cartApp", []);
 
 cartApp.controller("cartCtrl", function($scope, $http){
+	
+	
 
     $scope.refreshCart = function(){
+    	alert("inside refresh cart");
        $http.get('/ModernIntrno/rest/cart/' + $scope.cartId).success(function (data){
+    	   
            $scope.cart = data;
+          // $scope.cartItems = data.cartItems
        });
     };
 
@@ -13,30 +18,30 @@ cartApp.controller("cartCtrl", function($scope, $http){
     };
 
     $scope.initCartId = function(cartId){
+    	
         $scope.cartId = cartId;
-        $scope.refreshCart(cartId);
+        $scope.refreshCart();
     };
 
     $scope.addToCart = function(productId){
-    	alert("inside add to cart controller.js");
         $http.post('/ModernIntrno/rest/cart/add/' + productId).success(function (){
             alert('Product successfully added to the cart!');
         });
     };
 
     $scope.removeFromCart = function(productId){
-        $http.put('/ModernIntrno/rest/cart/remove/' + productId).success(function(data){
+        $http.post('/ModernIntrno/rest/cart/remove/' + productId).success(function(data){
            $scope.refreshCart();
         });
     };
 
+    var grandTotal = 0;
     $scope.calGrandTotal = function(){
-        var grandTotal = 0;
-
+       
         for (var i = 0; i < $scope.cart.cartItems.length; i++){
             grandTotal += $scope.cart.cartItems[i].totalPrice;
         }
-
+    	
         return grandTotal;
     }
 });

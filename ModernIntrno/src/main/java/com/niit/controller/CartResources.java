@@ -5,12 +5,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.niit.model.Cart;
@@ -36,8 +36,22 @@ public class CartResources {
 	private ProductService productService;
 
 	@RequestMapping("/{cartId}")
-	public @ResponseBody Cart getCartById(@PathVariable(value = "cartId") int cartId) {
-		return cartService.getCartById(cartId);
+	public ResponseEntity<Cart> getCartById(@PathVariable(value = "cartId") int cartId) {
+		Cart cart = cartService.getCartById(cartId);
+		//System.out.println("Customer Name = "+);
+		System.out.println(cart.getCartItems().get(0).getQuantity());
+		System.out.println("cart items size :" + cart.getCartItems().size());
+		display(cart.getCartItems());
+		return new ResponseEntity<Cart>(cart,HttpStatus.OK);
+	}
+	
+	private void display(List<CartItem> cartItems )
+	{
+		for(CartItem c:cartItems)
+		{
+			System.out.println("Cart Item Id" +c.getCartItemId());
+			System.out.println("Product Name "+c.getProduct().getName());
+		}
 	}
 
 	@RequestMapping(value = "/add/{pid}", method = RequestMethod.POST)

@@ -2,7 +2,6 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ page isELIgnored="false"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -43,8 +42,10 @@ p = 1	Study Table design for bedroom	Study Table	6899.0	3
 					<td>${product.price }</td>
 					<td>
 						<a href='<c:url value="viewProduct/${product.pid }"></c:url>'><span class="glyphicon glyphicon-info-sign"></span></a>
+						<c:if test="${pageContext.request.userPrincipal.name == admin }">
 						<a href='<c:url value="/admin/deleteProduct/${product.pid}"></c:url>'><span class="glyphicon glyphicon-trash"></span></a>
 						<a href='<c:url value="/admin/updateProductForm/${product.pid}"></c:url>'><span class="glyphicon glyphicon-pencil"></span></a>
+						</c:if>
 					</td>
 				</tr>
 			</c:forEach>

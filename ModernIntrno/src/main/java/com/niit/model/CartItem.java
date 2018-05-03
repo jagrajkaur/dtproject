@@ -13,12 +13,18 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class CartItem implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	private int cartItemId;
 	
 	@ManyToOne
     @JoinColumn(name = "cartId")
+	@JsonIgnore
     private Cart cart;
 
     @ManyToOne

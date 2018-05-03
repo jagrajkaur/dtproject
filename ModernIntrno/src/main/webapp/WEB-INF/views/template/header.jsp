@@ -13,8 +13,8 @@
 <body>
 
 <header>
-<div class="navber">
-<nav class="navbar navbar-default">
+<div class="navbar">
+<nav class="navbar navbar-default navbar-static-top">
 <div class="container-fluid">
 
 		<!-- LOGO -->
@@ -24,14 +24,15 @@
 		</div>
 		<hr>
 		
-		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-example" aria-expanded="false">
+		<div class="navbar-header">
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=#collapse-example" aria-expanded="false" />
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
         </button>
+        </div>
 		
 		<div class="navbar-collapse collapse" id="collapse-example"> 
 		<ul class="nav navbar-nav">
@@ -57,7 +58,7 @@
 								<li><a href="<c:url value="/j_spring_security_logout"/>">Logout</a></li>
 								
 								<c:if test="${pageContext.request.userPrincipal.name != 'admin'}"> 
-								<li><a href="<c:url value="/customer/cart"/>">Cart</a></li> 
+								<li><a href="<c:url value="/customer/cart"/>">User Cart</a></li> 
 								</c:if>
 								
 								<c:if

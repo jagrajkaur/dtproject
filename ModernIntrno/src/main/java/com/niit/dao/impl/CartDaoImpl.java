@@ -25,6 +25,7 @@ public class CartDaoImpl implements CartDao {
 	public Cart getCartById(int cartId) {
 	
 		try{
+			System.out.println("Inside CartDaoImpl class.............");
 			Session session = sessionFactory.openSession();
 			return (Cart) session.get(Cart.class, cartId);
 		}
